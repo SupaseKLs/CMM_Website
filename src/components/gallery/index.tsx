@@ -1,22 +1,27 @@
-import styles from './style.module.scss';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import styles from './style.module.scss'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 
-interface GalleryProps {
-  mousePosition: { x: number; y: number };
-  handle: string;
+interface MousePosition {
+  x: number
+  y: number
 }
 
-const Gallery: React.FC<GalleryProps> = ({ mousePosition, handle }) => {
-  const { x, y } = mousePosition;
+interface GalleryProps {
+  mousePosition: MousePosition
+  handle: string
+}
 
+export default function Gallery({ mousePosition, handle }: GalleryProps) {
+  const { x, y } = mousePosition
+  
   return (
     <div className={styles.gallery}>
       <div className={styles.imageContainer}>
         <Image 
-          src={`/images/${handle}/background.jpg`} 
-          alt="background image" 
-          fill 
+          src={`/images/${handle}/background.jpg`}
+          alt="image"
+          fill
         />
       </div>
       <motion.div
@@ -24,13 +29,11 @@ const Gallery: React.FC<GalleryProps> = ({ mousePosition, handle }) => {
         style={{ x, y }}
       >
         <Image 
-          src={`/images/${handle}/1.jpg`} 
-          alt="vignette image" 
-          fill 
+          src={`/images/${handle}/1.jpg`}
+          alt="image"
+          fill
         />
       </motion.div>
     </div>
-  );
-};
-
-export default Gallery;
+  )
+}
