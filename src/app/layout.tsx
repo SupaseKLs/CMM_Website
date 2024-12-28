@@ -1,12 +1,11 @@
 import "./globals.css";
 import { Kanit } from 'next/font/google';
-
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from '@/components/Navbar/page';
 
 const kanit = Kanit({
-  weight: '300', // หรือ 500, 600 ตามต้องการ
-  subsets: ['latin', 'thai'], // รองรับทั้งภาษาอังกฤษและไทย
+  weight: '300', 
+  subsets: ['latin', 'thai'],
 });
 
 export default function RootLayout({

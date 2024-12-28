@@ -1,6 +1,7 @@
 'use client';
 import CarouselDrag from '@/components/Carousel/page';
 import Gallery from '@/components/gallery';
+import Link from 'next/link';
 import { useSpring, MotionValue } from 'framer-motion';  // Import MotionValue
 interface Project {
   name: string;
@@ -55,7 +56,7 @@ const HomePage: React.FC = () => {
         <h1 className='absolute bottom-0 left-10 text-[5.5vw] font-semibold text-white'>DIVISION OF COMPUTER<br /> AND INFORMATION TECHNOLOGY</h1>
       </header>
 
-      <section className="h-full bg-white rounded-l-[50px] rounded-r-[50px] py-20">
+      <section className="h-full bg-white rounded-bl-[50px] rounded-br-[50px] py-20">
         <div className="w-11/12 mx-auto">
           <div>
             <h1 className='text-4xl font-bold'>CMM KMUTT</h1>
@@ -79,14 +80,14 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex justify-between mt-8">
+          <div className="flex flex-col md:flex-row justify-between mt-8">
             <h1 className='text-6xl font-bold font-kanit'>เพลิดเพลินไป<br />กับการเรียน</h1>
             <p className="max-w-[700px] pt-6 text-2xl">
               มหาวิทยาลัยมีหลักสูตรวิชาการนานาชาติที่หลากหลายให้เลือกเรียน ภาษาทางการ ได้แก่ อังกฤษ อิตาลี เยอรมัน และฝรั่งเศสซึ่งสร้างสภาพแวดล้อมที่สมบูรณ์แบบสำหรับการเรียนรู้และการวิจัยทางวิทยาศาสตร์
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mt-8">
+          <div className="flex flex-wrap justify-evenly py-20">
             <div className="bg-red-300 w-80 h-96">
               <h1>card1</h1>
             </div>
@@ -97,50 +98,67 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <section>
-        <div className='py-20'>
+      <section style={{ position: 'relative', zIndex: 1 }}>
+        <div className="py-20">
           <CarouselDrag />
-
         </div>
-        <h1>ผลงานนักศึกษา</h1>
+        
+        <div className="w-11/12 mx-auto">
+          <div className='flex justify-between'>
+            <div>
+              <h1 className='text-[5vw] text-white'>ผลงานนักศึกษา</h1>
+            </div>
+            <div className='mt-20'>
+              <Link className='rounded-xl py-4 px-8 border-white border-2 text-white' href="">ดูผลงานทั้งหมด</Link>
+            </div>
+          </div>
+        </div>
 
-        <main onMouseMove={mouseMove} >
+        <main onMouseMove={mouseMove}>
           {projects.map(({ handle }, i) => (
             <Gallery mousePosition={mousePosition} handle={handle} key={i} />
           ))}
         </main>
-
       </section>
 
-      <section className='h-full bg-white rounded-l-[50px] rounded-r-[50px] py-20'>
+      <section
+        className="h-full bg-white rounded-l-[50px] rounded-r-[50px] py-20"
+        style={{
+          position: 'relative',
+          zIndex: 2, // อยู่บน Section 1
+          marginTop: '-200px', // ปรับค่าเพื่อเลื่อน Section 2 มาซ้อน Section 1
+        }}
+      >
         <div className="w-11/12 mx-auto">
+          <div></div>
           <div>
-
-          </div>
-          <div>
-            <div className='flex justify-between'>
-              <div className='w-6/12'>
-                <h1 className='text-6xl font-semibold'>คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี</h1>
-                <h1 className='text-4xl font-semibold'>สาขาวิชาวิทยาการคอมพิวเตอร์ประยุกต์-มัลติมีเดีย</h1>
+            <div className="flex flex-col md:flex-row justify-between">
+              <div className="w-full md:w-6/12">
+                <h1 className="text-4xl md:text-6xl font-semibold">
+                  คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี
+                </h1>
+                <h1 className="text-2xl md:text-4xl font-semibold">
+                  สาขาวิชาวิทยาการคอมพิวเตอร์ประยุกต์-มัลติมีเดีย
+                </h1>
               </div>
-
-              <p className='w-4/12 text-2xl'>คำตอบสำหรับคนที่มีความฝันอยากสร้างอนาคตในสายเทคโนโลยีและมัลติมีเดียด้วยหลักสูตรที่ผสมผสานความรู้ด้านการพัฒนาเทคโนโลยีคอมพิวเตอร์และการสร้างสรรค์สื่อมัลติมีเดียเข้าด้วยกันอย่างลงตัว</p>
+              <p className="w-full md:w-4/12 text-2xl">
+                คำตอบสำหรับคนที่มีความฝันอยากสร้างอนาคตในสายเทคโนโลยีและมัลติมีเดียด้วยหลักสูตรที่ผสมผสานความรู้ด้านการพัฒนาเทคโนโลยีคอมพิวเตอร์และการสร้างสรรค์สื่อมัลติมีเดียเข้าด้วยกันอย่างลงตัว
+              </p>
             </div>
-
-            <div className='py-20 flex justify-center items-center '>
+            <div className="py-20 flex justify-center items-center">
               <video
                 playsInline
                 autoPlay
-                muted
                 loop
-                preload="metadata"
                 className="w-full rounded-xl h-[600px] object-cover"
               >
                 <source src="/video/Teacher.mp4" type="video/mp4" />
               </video>
             </div>
-          </div></div>
+          </div>
+        </div>
       </section>
+
 
     </>
   );
