@@ -3,6 +3,7 @@ import Human from "@/assets/images/human.png"
 import { StickyCard } from "@/components/ui/sticky-card";
 import { landscapeData } from "@/lib/landscape";
 import JobCareer from '@/components/JobCareer/page'
+import Marquee from '@/components/Marquee/page'
 export default function Scheme() {
   return (
     <>
@@ -270,6 +271,7 @@ export default function Scheme() {
 
         <div>
           <JobCareer />
+          <Marquee />
         </div>
         </div>
 
